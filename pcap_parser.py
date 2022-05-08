@@ -2,29 +2,25 @@ import os
 import pandas as pd
 
 
-# run shell command
-def run_shell_command(command):
-    os.system(command)
-
 
 
 if __name__ == '__main__':
 
-    # first we need to parse the data from pcap to csv with tshark
+    # First we need to parse the data from pcap to csv with tshark
 
-    # filename as user input
+    # Filename as user input
     filename = input('Enter the filename: ')
 
-    parsing_command = f'tshark -r {filename}.pcap -Tfields -E separator=, -e frame.time -e ip.src -e ip.dst -e udp.port -e frame.len > {filename}.csv'
-
-    run_shell_command(parsing_command)
+    parsing_command = f'tshark -r {filename}.pcap -Tfields -E separator=, -e frame.time -e ip.src -e ip.dst -e udp.srcport -e udp.dstport -e udp.length > {filename}.csv' #  The parser is just ooptimized for UDP sofar
+    os.system(parsing_command)
 
     # Now the data should be available as a csv
 
-
+    # To do some adjustments for better readability we use panda to transform the csv file into a dataframe 
     df = pd.read_csv(f'{filename}.csv')
-    df = df.drop(columns = df.columns[0])
-    df.columns = ['timestamp', 'src_ip', 'dst_ip', 'src_port', 'dst_port', 'length']
+    df = df.drop(columns = df.columns[0]) # first column is unnecessary
+
+    df.columns = ['timestamp', 'src_ip', 'dst_ip', 'src_port_udp', 'dst_port_udp', 'udp_length'] # The parser is just ooptimized for UDP sofar
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     df = df.set_index('timestamp')
 
