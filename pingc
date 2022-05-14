@@ -5,7 +5,7 @@ ping $* | while read line; do
   [[ "$line" =~ ^PING ]] && continue
   [[ ! "$line" =~ "bytes from" ]] && continue
 
-  dt=$(date +'%Y%m%d%H%M%S')
+  dt=$(date +'%Y-%m-%d %H:%M:%S')
   et=$(date +%s)
 
   addr=${line##*bytes from }
