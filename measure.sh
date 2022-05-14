@@ -20,5 +20,5 @@ echo(" ")
 echo(" ")
 
 
-tcpdump  -i wlan0 -w -s 0 dump_$HOSTNAME.pcap &
+tcpdump  -i wlan0  -s 0 -w dump_$HOSTNAME.pcap &
 echo(" tcpdump is running")
