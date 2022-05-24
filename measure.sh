@@ -1,6 +1,5 @@
 
 
-# change date
 read -p "Enter date (YYYYMMDDHHmm): " dateinput 
 date -s $dateinput
 
@@ -52,6 +51,9 @@ echo " ping is running"
 echo " "
 echo " "
 echo "_________________________________"
+echo " "
+echo " starting tcpdump"
+echo ".."
 echo " "
 tcpdump  -i wlan0  -s 0 -w dump_$HOSTNAME_$(date +%Y-%m-%d-%H:%M:%S).pcap &
 echo " "
