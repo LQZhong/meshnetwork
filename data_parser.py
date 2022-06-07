@@ -1,6 +1,6 @@
 import pandas as pd
 
-def parse_iperf_data(df):
+def get_iperf_data(df):
     
     """_summary_
 
