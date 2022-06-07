@@ -44,3 +44,22 @@ def get_pcap_udp_data(df):
     df['len'] = pd.DataFrame(info.rest.str.split(' Len=',1).tolist(), columns = ['dst_port_udp','len']).len # Grep UDP len from Info column
     df = df.drop(columns=['Info'])
     return df
+
+def get_ping_data(df):
+    """
+    _summary_
+
+        Args:
+            df (pandas DataFrame): ping log data ( csv)
+        Returns:
+            cleaned DataFrme
+        
+    _description_
+            This functions renamed the ping data columns and delete unnecessary columns
+    """
+    
+    df.columns = [['timestamp', 'idx', 'domain', 'delay']]
+    df = df.drop(columns=['domain', 'idx'])
+    
+    return df
+    
