@@ -25,7 +25,11 @@ echo " "
 echo "_________________________________"
 echo "  "
 echo " "
-read -p 'server-ip: ' server_ip
+#read -p 'server-ip: ' server_ip
+read -p 'router_number ' router_number
+ipv6_address=("" "fe80::9683:c4ff:fe04:5d1b%wlan0" "fe80::9683:c4ff:fe10:23db%wlan0" "fe80::9683:c4ff:fe10:241d%wlan0" "" "fe80::9683:c4ff:fe10:23b7%wlan0")
+
+server_ip=${ipv6_address[router_number]}
 echo " "
 echo "_________________________________"
 echo "  "
