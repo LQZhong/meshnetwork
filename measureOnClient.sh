@@ -31,7 +31,7 @@ echo " choose target router ( server) out of router 1 to 5"
 echo "  "
 echo " "
 read -p 'type router number  ' router_number
-ipv6_address=( [1]="fe80::9683:c4ff:fe04:5d1b%wlan0" [2]="fe80::9683:c4ff:fe10:23db%wlan0" [3]="fe80::9683:c4ff:fe10:241d%wlan0" [4]="No IP" [5]="fe80::9683:c4ff:fe10:23b7%wlan0")
+ipv6_address=( [1]="fe80::9683:c4ff:fe04:5d1b%wlan0" [2]="fe80::9683:c4ff:fe10:23db%wlan0" [3]="fe80::9683:c4ff:fe10:241d%wlan0" [4]="fe80::9683:c4ff:fe10:23d6%wlan0" [5]="fe80::9683:c4ff:fe10:23b7%wlan0")
 
 server_ip=${ipv6_address[router_number]}
 
